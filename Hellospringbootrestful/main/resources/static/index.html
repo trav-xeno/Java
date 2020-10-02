@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input  id="name" name="name" value="" placeholder="Enter your name:"  />
+    <!--
+    pattern="^[a-zA-Z]{2,}" title="Username should only contain letters. e.g. john"
+    -->
+
+    <button id="greeting" >
+        Greetings!
+    </button>
+   <h1 id="hello"></h1>
+
+</body>
+<script>
+    const btn = document.getElementById("greeting");
+    const inputName = document.getElementById("name");
+    const greeting = document.getElementById("hello");
+    let name = "";
+    let reg = /^[a-zA-Z]{2,}/i;
+    inputName.onchange = () => {
+        name = inputName.value ;
+    }
+    btn.addEventListener("click", () => {
+        if(name && reg.test(name)) {
+            fetch('/greeting?name=' + name)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data) // Prints result from `response.json()` in getRequest can also deconstruct if from response but this chaining works too
+                    let res = `id: ${data.id} ${data.content}`;
+                    greeting.innerText = res;
+
+                })
+                .catch(error => console.error(error))
+
+        }else{
+            console.log(reg.test(name));
+
+            greeting.innerText = `Please enter a valid name! e.g. john smith.
+            The pattern only allows for one space so first and last name or enter your preferred name.
+            Thank you!`;
+        }
+    });
+
+</script>
+</html>
