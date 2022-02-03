@@ -1,0 +1,17 @@
+<main class="container">
+  <section class="row">
+    <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+      <div class="card m-b-30">
+         <div class="card-body row">
+            <div class="col-6 card-title align-self-center mb-0">
+               <h5>{{employee?.firstname}}, {{employee?.lastname}} </h5>
+               <p class="m-0">{{employee?.id}}</p>
+            </div>
+         </div>
+         <ul class="list-group list-group-flush">
+            <li class="list-group-item"><i class="fa fa-envelope float-right"></i>{{employee?.email}}</li>
+         </ul>
+      </div>
+   </div>
+  </section>
+</main>

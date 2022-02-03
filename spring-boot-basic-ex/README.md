@@ -1,0 +1,2 @@
+# Spring boot angular project
+This is for some basic example of how to code will look with spring and angular. It is not ment to be a fully functional app! The angular project fully woorks but he spring backend won't! The code is just for straight references for work. I may come back and add more comments but for now this will do.  
